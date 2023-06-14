@@ -25,8 +25,8 @@ struct meta
 
 // Example of tiny_zones its layout:
 // [
-//     [blocks=[0x123,0x126,0x129], address=0x123, available_block_index=3],
-//     [blocks=[0x420], address=0x420, available_block_index=1]
+//   [blocks=[0x123,0x126,0x129], address=0x123, available_block_index=3],
+//   [blocks=[0x420], address=0x420, available_block_index=1]
 // ]
 
 #define BLOCKS_PER_ZONE 100
