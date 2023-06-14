@@ -35,7 +35,7 @@ struct meta
 #define TINY_ZONE_SIZE TINY_BLOCK_CAPACITY * BLOCKS_PER_ZONE
 
 // Called by for example malloc(3)
-fn allocate_tiny(size)
+fn malloc_tiny()
 	zone = meta.tiny_zones[meta.available_tiny_zone_index]
 
 	if zone.available_block_index < BLOCKS_PER_ZONE
@@ -47,7 +47,7 @@ fn allocate_tiny(size)
 		meta.available_tiny_zone_index++
 
 	push_new_zone(meta.tiny_zones)
-	return allocate_tiny(size)
+	return malloc_tiny()
 
 // Called by for example free(tiny_ptr)
 fn free_tiny(block_address)
