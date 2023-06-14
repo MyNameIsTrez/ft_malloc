@@ -8,7 +8,7 @@ struct block
 struct zone
 {
 	struct block *blocks;
-	void *address; // From mmap()
+	void *mmap_address;
 	size_t available_block_index;
 };
 
@@ -25,8 +25,8 @@ struct meta
 
 // Example of tiny_zones its layout:
 // [
-//   [blocks=[0x123,0x126,0x129], address=0x123, available_block_index=3],
-//   [blocks=[0x420], address=0x420, available_block_index=1]
+//   [blocks=[0x123,0x126,0x129], mmap_address=0x123, available_block_index=3],
+//   [blocks=[0x420], mmap_address=0x420, available_block_index=1]
 // ]
 
 #define BLOCKS_PER_ZONE 100
@@ -39,7 +39,7 @@ fn allocate_tiny(size)
 	zone = meta.tiny_zones[available_tiny_zone_index]
 
 	if zone.available_block_index < BLOCKS_PER_ZONE
-		block_address = zone.address + zone.available_block_index * TINY_BLOCK_CAPACITY
+		block_address = zone.mmap_address + zone.available_block_index * TINY_BLOCK_CAPACITY
 		zone.available_block_index++
 		push_block(zone.blocks, (block){block_address})
 		return block_address
