@@ -29,8 +29,9 @@ struct meta
 //     [blocks=[0x420], address=0x420, available_block_index=1]
 // ]
 
-#define TINY_BLOCK_LENGTH 10
 #define BLOCKS_PER_ZONE 100
+
+#define TINY_BLOCK_LENGTH 10
 #define TINY_ZONE_SIZE TINY_BLOCK_LENGTH * BLOCKS_PER_ZONE
 
 // Called by for example malloc(3)
