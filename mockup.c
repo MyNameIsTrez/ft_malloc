@@ -51,7 +51,8 @@ fn allocate_tiny(size)
 
 // Called by for example free(tiny_ptr)
 fn free_tiny(block_address)
-	zone_index = get_zone_index_from_block_address(block_address) // Can use hashmap for O(1)
+	// Use simple hashmap for O(1)
+	zone_index = get_zone_index_from_block_address(block_address)
 	if zone == -1
 		return
 	zone = meta.tiny_zones[zone_index]
